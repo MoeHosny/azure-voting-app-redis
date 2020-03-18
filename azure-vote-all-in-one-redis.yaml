@@ -1,12 +1,9 @@
-apiVersion: apps/v1
+apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
   name: azure-vote-back
 spec:
   replicas: 1
-  selector:
-    matchLabels:
-      app: azure-vote-back
   template:
     metadata:
       labels:
@@ -31,15 +28,12 @@ spec:
   selector:
     app: azure-vote-back
 ---
-apiVersion: apps/v1
+apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
   name: azure-vote-front
 spec:
   replicas: 1
-  selector:
-    matchLabels:
-      app: azure-vote-front
   strategy:
     rollingUpdate:
       maxSurge: 1
@@ -54,7 +48,7 @@ spec:
         "beta.kubernetes.io/os": linux
       containers:
       - name: azure-vote-front
-        image: microsoft/azure-vote-front:v1
+        image: avayaacr.azurecr.io/azure-vote-front:v1
         ports:
         - containerPort: 80
         resources:
