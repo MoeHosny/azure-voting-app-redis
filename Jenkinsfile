@@ -11,6 +11,14 @@ docker push $WEB_IMAGE_NAME'''
       }
     }
 
+    stage('push image from ACR to Kubernets') {
+      steps {
+        sh '''# Update kubernetes deployment with new image.
+WEB_IMAGE_NAME="${ACR_LOGINSERVER}/azure-vote-front:kube${BUILD_NUMBER}"
+kubectl set image deployment/azure-vote-front azure-vote-front=$WEB_IMAGE_NAME --kubeconfig /var/lib/jenkins/config'''
+      }
+    }
+
   }
   environment {
     ACR_LOGINSERVER = 'avayaacr.azurecr.io'
