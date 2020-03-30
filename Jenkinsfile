@@ -22,12 +22,12 @@ kubectl set image deployment/azure-vote-front azure-vote-front=$WEB_IMAGE_NAME -
     stage('Create Kafka') {
       environment {
         message_retention = '4'
-        partation_count = '2'
+        partition_count = '2'
       }
       steps {
-        sh '''#kafka powershell 
+        sh '''
+#kafka powershell 
 #--------------------
-
 # login to azure
 az login --service-principal --username 61df7fd5-cc86-4f12-95ab-6aab8cb8d214 --password f3cafe20-0f95-4fc8-adcb-8c914fce5a66 --tenant a991fd11-f309-430f-ae64-974e3a30ca92
 
@@ -36,10 +36,10 @@ az group create  -n  ${ResourceGroupName}${BUILD_NUMBER} -l "UAE North" -g ${Res
 
 
 #Create Event hub Namespace
-az eventhubs namespace create --name "EventHubNameSpace"$ResourceGroupName  --resource-group  ${ResourceGroupName}${BUILD_NUMBER}  -l "UAE North"
+az eventhubs namespace create --name "EventHubNameSpace"${ResourceGroupName}${BUILD_NUMBER}  --resource-group  ${ResourceGroupName}${BUILD_NUMBER}  -l "UAE North"
 
 #create Event hub
-az eventhubs eventhub create --name "Topic"$ResourceGroupName  --resource-group ${ResourceGroupName}${BUILD_NUMBER}  --namespace-name "EventHubNameSpace"$ResourceGroupName  --message-retention ${message_retention} --partition-count ${partition_count}
+az eventhubs eventhub create --name "Topic"${ResourceGroupName}${BUILD_NUMBER}  --resource-group ${ResourceGroupName}${BUILD_NUMBER}  --namespace-name "EventHubNameSpace"${ResourceGroupName}${BUILD_NUMBER}  --message-retention ${message_retention} --partition-count ${partition_count}
 
 '''
       }
