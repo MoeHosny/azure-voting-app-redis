@@ -27,7 +27,7 @@ kubectl set image deployment/azure-vote-front azure-vote-front=$WEB_IMAGE_NAME -
       steps {
         sh '''#kafka powershell 
 --------------------
-$ResourceGroupName = ${ResourceGroupName} + ${BUILD_NUMBER}]
+$ResourceGroupName = ${ResourceGroupName} + ${BUILD_NUMBER}
 $EventHubNameSpace =  "EventHubNameSpace" + $ResourceGroupName
 $Topic = "Topic" + $ResourceGroupName
 
