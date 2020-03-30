@@ -27,7 +27,7 @@ kubectl set image deployment/azure-vote-front azure-vote-front=$WEB_IMAGE_NAME -
       steps {
         sh '''# kafka powershell 
 
-$ResourceGroupName = ${ResourceGroupName} + ${BUILD_NUMBER}
+$ResourceGroupName = ${ResourceGroup} + ${BUILD_NUMBER}
 $EventHubNameSpace =  "EventHubNameSpace" + $ResourceGroupName
 $Topic = "Topic" + $ResourceGroupName
 
@@ -55,6 +55,6 @@ az eventhubs eventhub create --name $Topic   --resource-group $ResourceGroupName
     ACR_LOGINSERVER = 'avayaacr.azurecr.io'
     ACR_ID = '328f1fb7-32ad-4b17-ae6f-5d553a9ae9c6'
     ACR_PASSWORD = '6b6d2aa3-5da0-42b4-bc31-c6c2ce6ba945'
-    ResourceGroupName = 'RG'
+    ResourceGroup = 'RG'
   }
 }
