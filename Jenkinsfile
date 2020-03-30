@@ -26,7 +26,13 @@ az login --service-principal --username 61df7fd5-cc86-4f12-95ab-6aab8cb8d214 --p
 
 # create resource group 
 az group create  -n ${ResourceGroupName}${BUILD_NUMBER}  -l "UAE North" -g ${ResourceGroupName}${BUILD_NUMBER} 
-'''
+
+
+#Create Event hub Namespace
+az eventhubs namespace create --name EventHubNameSpace${ResourceGroupName}${BUILD_NUMBER} --resource-group ${ResourceGroupName}${BUILD_NUMBER} -l "UAE North"
+
+#create Event hub 
+az eventhubs eventhub create --name EventHubName${ResourceGroupName}${BUILD_NUMBER} --resource-group ${ResourceGroupName}${BUILD_NUMBER} --namespace-name EventHubNameSpace${ResourceGroupName}${BUILD_NUMBER} --message-retention 4 --partition-count 15'''
       }
     }
 
