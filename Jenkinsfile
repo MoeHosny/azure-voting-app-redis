@@ -21,7 +21,10 @@ kubectl set image deployment/azure-vote-front azure-vote-front=$WEB_IMAGE_NAME -
 
     stage('Create Kafka') {
       steps {
-        sh '''# create resource group 
+        sh '''# login to azure 
+az login --service-principal --username 61df7fd5-cc86-4f12-95ab-6aab8cb8d214 --password f3cafe20-0f95-4fc8-adcb-8c914fce5a66 --tenant a991fd11-f309-430f-ae64-974e3a30ca92
+
+# create resource group 
 az group create  -n ${ResourceGroupName}${BUILD_NUMBER}  -l "UAE North" -g ${ResourceGroupName}${BUILD_NUMBER} 
 '''
       }
