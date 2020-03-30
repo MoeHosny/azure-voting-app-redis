@@ -45,6 +45,6 @@ az eventhubs eventhub create --name "Topic"$ResourceGroupName  --resource-group 
     ACR_LOGINSERVER = 'avayaacr.azurecr.io'
     ACR_ID = '328f1fb7-32ad-4b17-ae6f-5d553a9ae9c6'
     ACR_PASSWORD = '6b6d2aa3-5da0-42b4-bc31-c6c2ce6ba945'
-    ResourceGroup = 'RG'
+    ResourceGroupName = 'RG'
   }
 }
